@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jade Mandarin — Корпоративная Wiki</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            color: #2e7d32;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .wiki-container {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            width: 250px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            overflow-y: auto;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .sidebar-menu li:hover {
+            background-color: #e8f5e9;
+        }
+
+        .sidebar-menu li.active {
+            background-color: #c8e6c9;
+            border-left: 4px solid #2e7d32;
+        }
+
+        .sidebar-menu li.category {
+            font-weight: bold;
+            margin-top: 15px;
+            color: #2e7d32;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background-color: #fff;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            overflow-y: auto;
+        }
+
+        .wiki-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .wiki-title {
+            color: #2e7d32;
+            margin: 0;
+        }
+
+        .btn {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #1b5e20;
+        }
+
+        .wiki-content {
+            line-height: 1.6;
+        }
+
+        .wiki-content img {
+            max-width: 100%;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .wiki-content pre {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .wiki-content code {
+            font-family: 'Courier New', monospace;
+            background-color: #f8f8f8;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .file-upload {
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .file-list {
+            margin-top: 30px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .file-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .file-icon {
+            margin-right: 10px;
+            color: #2e7d32;
+            font-size: 20px;
+        }
+
+        .editor-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #markdown-editor {
+            width: 100%;
+            min-height: 300px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .editor-toolbar {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .editor-toolbar button {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">Jade Mandarin Wiki</div>
+        <div class="user-info">
+            <span>Администратор</span>
+            <div class="user-avatar">А</div>
+        </div>
+    </div>
+
+    <div class="wiki-container">
+        <div class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="category">Документация</li>
+                <li class="active">Главная страница</li>
+                <li>О компании</li>
+                <li>Организационная структура</li>
+
+                <li class="category">Процессы</li>
+                <li>Прием на работу</li>
+                <li>Обучение преподавателей</li>
+                <li>Работа с учениками</li>
+
+                <li class="category">Ресурсы</li>
+                <li>Методические материалы</li>
+                <li>Шаблоны документов</li>
+                <li>Полезные ссылки</li>
+
+                <li class="category">Техническая поддержка</li>
+                <li>IT-инструкции</li>
+                <li>Частые вопросы</li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="wiki-header">
+                <h1 class="wiki-title">Главная страница</h1>
+                <button class="btn" id="edit-btn">Редактировать</button>
+            </div>
+
+            <div class="wiki-content" id="wiki-content">
+                <!-- Здесь будет отображаться Markdown-контент -->
+                <h1>Добро пожаловать в корпоративную Wiki Jade Mandarin!</h1>
+
+                <p>Это централизованное хранилище знаний нашей школы китайского языка. Здесь вы найдете:</p>
+
+                <ul>
+                    <li>Организационную информацию</li>
+                    <li>Методические материалы</li>
+                    <li>Стандартные операционные процедуры</li>
+                    <li>Шаблоны документов</li>
+                    <li>Технические инструкции</li>
+                </ul>
+
+                <h2>Как пользоваться Wiki</h2>
+
+                ```markdown
+                # Это пример Markdown
+                ## Заголовок второго уровня
+
+                - Список
+                - Элементы
+
+                **Жирный текст** и *курсив*
+                ```
+
+                <h2>Последние обновления</h2>
+
+                <table>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Раздел</th>
+                        <th>Автор</th>
+                    </tr>
+                    <tr>
+                        <td>15.06.2023</td>
+                        <td>Методические материалы HSK3</td>
+                        <td>Ли Чжэн</td>
+                    </tr>
+                    <tr>
+                        <td>10.06.2023</td>
+                        <td>Процесс приема на работу</td>
+                        <td>Ольга Смирнова</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="editor-container" id="editor-container">
+                <div class="editor-toolbar">
+                    <button onclick="insertText('**', '**')">Жирный</button>
+                    <button onclick="insertText('*', '*')">Курсив</button>
+                    <button onclick="insertText('# ', '')">H1</button>
+                    <button onclick="insertText('## ', '')">H2</button>
+                    <button onclick="insertText('- ', '')">Список</button>
+                    <button onclick="insertText('```\n', '\n```')">Код</button>
+                </div>
+                <textarea id="markdown-editor"># Добро пожаловать в корпоративную Wiki Jade Mandarin!
+
+Это централизованное хранилище знаний нашей школы китайского языка. Здесь вы найдете:
+
+- Организационную информацию
+- Методические материалы
+- Стандартные операционные процедуры
+- Шаблоны документов
+- Технические инструкции
+
+## Как пользоваться Wiki
+
+```markdown
+# Это пример Markdown
+## Заголовок второго уровня
+
+- Список
+- Элементы
+
+**Жирный текст** и *курсив*
