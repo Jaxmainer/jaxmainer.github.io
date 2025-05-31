@@ -1,5 +1,141 @@
-body {
-    font-family: Arial;
-    text-align: center;
-    padding: 50px;
+/* ===== ГЛАВНАЯ СТРАНИЦА ===== */
+/* Для подключения <link rel="stylesheet" href="css/styles.css"> */
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+              url('../img/hero-bg.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 180px 0;
+  margin-top: 70px; /* Учитывает высоту sticky header */
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+/* Секция курсов */
+.courses-section {
+  padding: 80px 0;
+  background-color: white;
+}
+
+.course-card {
+  border-left: 4px solid var(--jade-primary);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(46, 125, 50, 0.1);
+}
+
+/* Секция преподавателей */
+.teachers-section {
+  background-color: var(--jade-light);
+  padding: 80px 0;
+}
+
+.teacher-card {
+  text-align: center;
+}
+
+.teacher-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--jade-primary);
+}
+
+/* Форма заявки */
+.trial-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid var(--gray-border);
+  border-radius: 4px;
+}
+
+/* Футер */
+.footer {
+  background-color: var(--text-dark);
+  color: white;
+  padding: 40px 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.footer a {
+  color: var(--jade-light);
+  text-decoration: none;
+}
+
+/* ===== АНИМАЦИИ ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 992px) {
+  .hero {
+    padding: 120px 0;
+  }
+  
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 0;
+    margin-top: 60px;
+  }
+  
+  .course-card {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 }

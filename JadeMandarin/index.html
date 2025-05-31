@@ -1,14 +1,217 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ru">
 <head>
-    <title>Jade Mandarin</title>
-    <link href="css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jade Mandarin — Школа китайского языка</title>
+    <meta name="description" content="Онлайн и оффлайн курсы китайского языка с носителями. Подготовка к HSK, разговорная практика, бизнес-китайский">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="img/favicon.ico">
+    <!-- Preload основных шрифтов -->
+    <link rel="preload" href="fonts/Mandarin.woff2" as="font" type="font/woff2" crossorigin>
 </head>
-
 <body>
-    <h1>Добро пожаловать в Jade Mandarin!</h1>
-    <script src="js/script.js"></script>
-</body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="Jade Mandarin">
+                <span class="logo-icon">🀄</span>
+                <span class="logo-text">Jade Mandarin</span>
+            </a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#courses">Курсы</a></li>
+                    <li><a href="#teachers">Преподаватели</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="pages/01_PA_student.html" class="btn btn-outline">Вход</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Открыть меню" aria-expanded="false">☰</button>
+        </div>
+    </header>
 
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Китайский язык — это просто!</h1>
+                <p class="hero-subtitle">Начните обучение с бесплатного пробного урока с носителем языка</p>
+                <div class="hero-actions">
+                    <a href="#trial" class="btn btn-primary">Записаться</a>
+                    <a href="#video" class="btn btn-video">▶ Смотреть видео</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="img/hero-mandarin.png" alt="Изучайте китайский с Jade Mandarin" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Авторские методики</h3>
+                    <p>Программы, разработанные для русскоязычных студентов</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>Преподаватели-носители</h3>
+                    <p>Сертифицированные педагоги с опытом работы</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>Онлайн-платформа</h3>
+                    <p>Удобный личный кабинет и интерактивные материалы</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Курсы -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <h2 class="section-title">Наши курсы</h2>
+            <div class="courses-grid">
+                <article class="course-card">
+                    <div class="course-badge">HSK 1-2</div>
+                    <h3>Для начинающих</h3>
+                    <ul>
+                        <li>Иероглифика с нуля</li>
+                        <li>Базовые диалоги</li>
+                        <li>Фонетика и тоны</li>
+                    </ul>
+                    <div class="course-footer">
+                        <span class="course-price">от 5 900 ₽/мес</span>
+                        <a href="#trial" class="btn btn-small">Записаться</a>
+                    </div>
+                </article>
+                <article class="course-card popular">
+                    <div class="course-badge">HSK 3-4</div>
+                    <h3>Для продолжающих</h3>
+                    <ul>
+                        <li>Грамматика среднего уровня</li>
+                        <li>Чтение текстов</li>
+                        <li>Подготовка к экзаменам</li>
+                    </ul>
+                    <div class="course-footer">
+                        <span class="course-price">от 7 900 ₽/мес</span>
+                        <a href="#trial" class="btn btn-small">Записаться</a>
+                    </div>
+                </article>
+                <article class="course-card">
+                    <div class="course-badge">Разговорный</div>
+                    <h3>Для всех уровней</h3>
+                    <ul>
+                        <li>Живое общение</li>
+                        <li>Культура Китая</li>
+                        <li>Бизнес-китайский</li>
+                    </ul>
+                    <div class="course-footer">
+                        <span class="course-price">от 4 900 ₽/мес</span>
+                        <a href="#trial" class="btn btn-small">Записаться</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преподаватели -->
+    <section id="teachers" class="teachers">
+        <div class="container">
+            <h2 class="section-title">Наши преподаватели</h2>
+            <div class="teachers-slider">
+                <article class="teacher-card">
+                    <img src="img/teacher-li.jpg" alt="Ли Чжэн" loading="lazy">
+                    <h3>Ли Чжэн</h3>
+                    <p class="teacher-bio">Носитель языка, 8 лет опыта преподавания</p>
+                    <p class="teacher-desc">Специализация: подготовка к HSK, бизнес-китайский</p>
+                </article>
+                <article class="teacher-card">
+                    <img src="img/teacher-anna.jpg" alt="Анна Петрова" loading="lazy">
+                    <h3>Анна Петрова</h3>
+                    <p class="teacher-bio">Русскоязычный преподаватель, HSK 6</p>
+                    <p class="teacher-desc">Специализация: объяснение грамматики для русскоязычных</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма записи -->
+    <section id="trial" class="trial-form">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="section-title">Записаться на пробный урок</h2>
+                <form id="trialForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="course">Интересующий курс</label>
+                        <select id="course" name="course">
+                            <option value="hsk1">HSK 1-2 (Начальный)</option>
+                            <option value="hsk3">HSK 3-4 (Средний)</option>
+                            <option value="speaking">Разговорный курс</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                </form>
+            </div>
+            <div class="form-image">
+                <img src="img/form-image.jpg" alt="Урок китайского языка" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo">Jade Mandarin</div>
+                    <p>Школа китайского языка с 2015 года</p>
+                </div>
+                <nav class="footer-nav">
+                    <h3>Курсы</h3>
+                    <ul>
+                        <li><a href="#">HSK 1-2</a></li>
+                        <li><a href="#">HSK 3-4</a></li>
+                        <li><a href="#">Разговорный курс</a></li>
+                    </ul>
+                </nav>
+                <div class="footer-contacts">
+                    <h3>Контакты</h3>
+                    <address>
+                        <p>Москва, ул. Тверская, 18</p>
+                        <p><a href="mailto:info@jademandarin.com">info@jademandarin.com</a></p>
+                        <p><a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 Jade Mandarin. Все права защищены.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Мы в ВКонтакте">VK</a>
+                    <a href="#" aria-label="Мы в Telegram">TG</a>
+                    <a href="#" aria-label="Мы в WeChat">WeChat</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="js/main.js" defer></script>
+</body>
 </html>

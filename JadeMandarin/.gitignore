@@ -1,0 +1,42 @@
+# Файлы операционной системы
+.DS_Store
+Thumbs.db
+
+# Файлы редактора/IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Логи и временные файлы
+*.log
+*.tmp
+*.temp
+
+# Зависимости
+node_modules/
+
+# Сборки и артефакты
+dist/
+build/
+*.min.js
+*.min.css
+
+# Конфигурационные файлы
+.env
+.env.local
+.env.development
+.env.production
+
+# Автогенерируемые файлы
+.sass-cache/
+__pycache__/
+
+# Файлы пакетного менеджера
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Системные файлы
+*.bak
+*.backup

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jade Mandarin — Корпоративная Wiki</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/wiki.css">
+    <link rel="icon" href="../img/favicon.ico">
+    <!-- Подключение библиотек через CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="logo" aria-label="Jade Mandarin Wiki">Jade Wiki</div>
+            <div class="user-info">
+                <span class="user-name">Администратор</span>
+                <div class="user-avatar" aria-label="Аватар администратора">А</div>
+            </div>
+            <button class="mobile-menu-btn" aria-expanded="false" aria-label="Меню">☰</button>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <div class="wiki-container">
+        <!-- Сайдбар -->
+        <aside class="wiki-sidebar" aria-label="Навигация по Wiki">
+            <div class="search-box">
+                <input type="text" placeholder="Поиск..." aria-label="Поиск по Wiki">
+                <button type="button" class="search-btn" aria-label="Искать">🔍</button>
+            </div>
+            <nav>
+                <ul class="wiki-menu">
+                    <li class="category">Документация</li>
+                    <li class="active" aria-current="page"><a href="#">Главная страница</a></li>
+                    <li><a href="#">О компании</a></li>
+                    <li><a href="#">Организационная структура</a></li>
+
+                    <li class="category">Процессы</li>
+                    <li><a href="#">Прием на работу</a></li>
+                    <li><a href="#">Обучение преподавателей</a></li>
+                    <li><a href="#">Работа с учениками</a></li>
+
+                    <li class="category">Ресурсы</li>
+                    <li><a href="#">Методические материалы</a></li>
+                    <li><a href="#">Шаблоны документов</a></li>
+                    <li><a href="#">Полезные ссылки</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Основная область -->
+        <main class="wiki-content">
+            <div class="wiki-header">
+                <h1 class="wiki-title">Главная страница</h1>
+                <div class="wiki-actions">
+                    <button type="button" class="btn" id="edit-btn">Редактировать</button>
+                    <button type="button" class="btn btn-secondary" id="save-btn" style="display: none;">Сохранить</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-btn" style="display: none;">Отмена</button>
+                </div>
+            </div>
+
+            <!-- Контент Wiki (предпросмотр) -->
+            <div class="wiki-preview" id="wiki-preview">
+                <!-- Сюда будет рендериться Markdown -->
+                <h1>Добро пожаловать в корпоративную Wiki Jade Mandarin!</h1>
+                <p>Это централизованное хранилище знаний нашей школы китайского языка.</p>
+                
+                <h2>Как пользоваться Wiki</h2>
+                <pre><code class="language-markdown"># Заголовок 1
+## Заголовок 2
+- Пункт списка
+**Жирный текст**</code></pre>
+            </div>
+
+            <!-- Редактор Markdown (скрыт по умолчанию) -->
+            <div class="wiki-editor" id="wiki-editor">
+                <div class="editor-toolbar">
+                    <button type="button" class="tool-btn" data-tag="h1">H1</button>
+                    <button type="button" class="tool-btn" data-tag="h2">H2</button>
+                    <button type="button" class="tool-btn" data-tag="bold">Жирный</button>
+                    <button type="button" class="tool-btn" data-tag="italic">Курсив</button>
+                    <button type="button" class="tool-btn" data-tag="code">Код</button>
+                    <button type="button" class="tool-btn" data-tag="list">Список</button>
+                </div>
+                <textarea id="markdown-editor" placeholder="Введите текст с использованием Markdown..."># Добро пожаловать в корпоративную Wiki Jade Mandarin!
+                
+Это централизованное хранилище знаний нашей школы китайского языка.
+
+## Как пользоваться Wiki
+```markdown
+# Заголовок 1
+## Заголовок 2
+- Пункт списка
+**Жирный текст**
+```</textarea>
+            </div>
+
+            <!-- История изменений -->
+            <section class="wiki-history" aria-labelledby="history-heading">
+                <h2 id="history-heading">Последние изменения</h2>
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Автор</th>
+                            <th>Изменения</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>15.06.2023</td>
+                            <td>Ли Чжэн</td>
+                            <td>Добавлены материалы HSK3</td>
+                        </tr>
+                        <tr>
+                            <td>10.06.2023</td>
+                            <td>Ольга Смирнова</td>
+                            <td>Обновлен процесс найма</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Подключение скриптов -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="../js/wiki-editor.js" defer></script>
+</body>
+</html>

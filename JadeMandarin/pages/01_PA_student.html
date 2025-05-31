@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jade Mandarin — Личный кабинет</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/student.css">
+    <link rel="icon" href="../img/favicon.ico">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="logo" aria-label="Jade Mandarin">JM</div>
+            <div class="user-info">
+                <span class="user-name">Анна Ковалева</span>
+                <div class="user-avatar" aria-label="Аватар пользователя">АК</div>
+            </div>
+            <button class="mobile-menu-btn" aria-expanded="false" aria-label="Меню">☰</button>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <div class="layout-container">
+        <!-- Сайдбар -->
+        <nav class="sidebar" aria-label="Основное меню">
+            <ul class="sidebar-menu">
+                <li class="active" aria-current="page">
+                    <a href="#">Главная</a>
+                </li>
+                <li><a href="#">Мои уроки</a></li>
+                <li><a href="#">Домашние задания</a></li>
+                <li><a href="#">Материалы</a></li>
+                <li><a href="#">Прогресс</a></li>
+                <li><a href="#">Чат с преподавателем</a></li>
+                <li><a href="#">Оплата</a></li>
+            </ul>
+        </nav>
+
+        <!-- Основная область -->
+        <main class="main-content">
+            <!-- Блок прогресса -->
+            <section class="dashboard-section" aria-labelledby="progress-heading">
+                <h2 id="progress-heading" class="section-title">Мой прогресс</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Уровень</div>
+                        <div class="stat-value">HSK 2</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Пройдено уроков</div>
+                        <div class="stat-value">15</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Следующая цель</div>
+                        <div class="stat-value">HSK 3</div>
+                    </div>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-fill" style="width: 65%"></div>
+                </div>
+                <p class="progress-text">Вы завершили 65% программы HSK 2</p>
+            </section>
+
+            <!-- Ближайшие уроки -->
+            <section class="dashboard-section" aria-labelledby="lessons-heading">
+                <h2 id="lessons-heading" class="section-title">Ближайшие уроки</h2>
+                <div class="upcoming-lessons">
+                    <article class="lesson-card">
+                        <div>
+                            <time datetime="2023-06-12T10:00" class="lesson-time">10:00 - 11:00, Пн, 12 июня</time>
+                            <div class="lesson-topic">Тема: Грамматика HSK 2</div>
+                            <div class="lesson-teacher">Преподаватель: Ли Чжэн</div>
+                        </div>
+                        <button type="button" class="btn" aria-label="Подключиться к уроку 12 июня">Подключиться</button>
+                    </article>
+                    <article class="lesson-card">
+                        <div>
+                            <time datetime="2023-06-14T14:30" class="lesson-time">14:30 - 15:30, Ср, 14 июня</time>
+                            <div class="lesson-topic">Тема: Разговорная практика</div>
+                            <div class="lesson-teacher">Преподаватель: Чжан Юй</div>
+                        </div>
+                        <button type="button" class="btn" aria-label="Подготовиться к уроку 14 июня">Подготовиться</button>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Домашние задания -->
+            <section class="dashboard-section" aria-labelledby="homework-heading">
+                <h2 id="homework-heading" class="section-title">Домашние задания</h2>
+                <article class="lesson-card">
+                    <div>
+                        <time datetime="2023-06-13" class="lesson-time">Дедлайн: 13 июня</time>
+                        <div class="lesson-topic">Упражнения по иероглифам (стр. 45-47)</div>
+                    </div>
+                    <button type="button" class="btn" aria-label="Отправить домашнее задание">Отправить</button>
+                </article>
+            </section>
+
+            <!-- Материалы -->
+            <section class="dashboard-section" aria-labelledby="materials-heading">
+                <h2 id="materials-heading" class="section-title">Последние материалы</h2>
+                <div class="materials-list">
+                    <article class="material-card">
+                        <h3>Словарь HSK 2</h3>
+                        <p>PDF, 2.4 MB</p>
+                        <button type="button" class="btn" aria-label="Скачать Словарь HSK 2">Скачать</button>
+                    </article>
+                    <article class="material-card">
+                        <h3>Аудио-диалоги</h3>
+                        <p>MP3, 15 файлов</p>
+                        <button type="button" class="btn" aria-label="Скачать Аудио-диалоги">Скачать</button>
+                    </article>
+                    <article class="material-card">
+                        <h3>Прописи иероглифов</h3>
+                        <p>PDF, 5.1 MB</p>
+                        <button type="button" class="btn" aria-label="Скачать Прописи иероглифов">Скачать</button>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/main.js" defer></script>
+</body>
+</html>

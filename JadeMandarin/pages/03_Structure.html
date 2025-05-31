@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jade Mandarin — Структура компании</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/structure.css">
+    <link rel="icon" href="../img/favicon.ico">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="logo" aria-label="Jade Mandarin">JM</div>
+            <div class="user-info">
+                <span class="user-name">Администратор</span>
+                <div class="user-avatar" aria-label="Аватар администратора">А</div>
+            </div>
+            <button class="mobile-menu-btn" aria-expanded="false" aria-label="Меню">☰</button>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <div class="layout-container">
+        <!-- Сайдбар -->
+        <nav class="sidebar" aria-label="Административное меню">
+            <ul class="sidebar-menu">
+                <li><a href="#">Главная</a></li>
+                <li class="active" aria-current="page">
+                    <a href="#">Структура компании</a>
+                </li>
+                <li><a href="#">Документы</a></li>
+                <li><a href="#">Календарь</a></li>
+                <li><a href="#">Чат</a></li>
+                <li><a href="#">Настройки</a></li>
+            </ul>
+        </nav>
+
+        <!-- Основная область -->
+        <main class="main-content">
+            <h1 class="page-title">Структура компании</h1>
+
+            <!-- Поиск и фильтры -->
+            <section class="controls-section" aria-labelledby="controls-heading">
+                <h2 id="controls-heading" class="visually-hidden">Управление отображением</h2>
+                <div class="search-box">
+                    <input type="text" placeholder="Поиск по отделам..." aria-label="Поиск по отделам">
+                    <button type="button" class="search-btn" aria-label="Найти">🔍</button>
+                </div>
+                <div class="filters">
+                    <button type="button" class="filter-btn active" data-filter="all">Все</button>
+                    <button type="button" class="filter-btn" data-filter="hr">HR</button>
+                    <button type="button" class="filter-btn" data-filter="education">Обучение</button>
+                </div>
+            </section>
+
+            <!-- Отдел кадров -->
+            <section class="department-card" aria-labelledby="hr-heading">
+                <div class="department-header">
+                    <h2 id="hr-heading">Отдел кадров</h2>
+                    <button type="button" class="btn" aria-label="Связаться с HR">Связаться</button>
+                </div>
+                <p class="department-description">Отвечает за подбор преподавателей, адаптацию сотрудников и кадровый учет.</p>
+                
+                <h3 class="team-heading">Команда</h3>
+                <div class="team-members">
+                    <article class="member-card" data-dept="hr">
+                        <div class="member-avatar">ОС</div>
+                        <div class="member-info">
+                            <h4 class="member-name">Ольга Смирнова</h4>
+                            <p class="member-position">HR-директор</p>
+                            <address class="contact-info">
+                                <a href="mailto:olga.s@jademandarin.com">olga.s@jademandarin.com</a>
+                                <span>+7 (123) 456-78-90</span>
+                            </address>
+                        </div>
+                    </article>
+
+                    <article class="member-card" data-dept="hr">
+                        <div class="member-avatar">АК</div>
+                        <div class="member-info">
+                            <h4 class="member-name">Алексей Козлов</h4>
+                            <p class="member-position">Рекрутер</p>
+                            <address class="contact-info">
+                                <a href="mailto:alexey.k@jademandarin.com">alexey.k@jademandarin.com</a>
+                            </address>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Методический отдел -->
+            <section class="department-card" aria-labelledby="edu-heading">
+                <div class="department-header">
+                    <h2 id="edu-heading">Методический отдел</h2>
+                    <button type="button" class="btn" aria-label="Связаться с методистами">Связаться</button>
+                </div>
+                <p class="department-description">Разрабатывает учебные программы, материалы и контролирует качество преподавания.</p>
+                
+                <h3 class="team-heading">Команда</h3>
+                <div class="team-members">
+                    <article class="member-card" data-dept="education">
+                        <div class="member-avatar">ЛЧ</div>
+                        <div class="member-info">
+                            <h4 class="member-name">Ли Чжэн</h4>
+                            <p class="member-position">Методист (китайский язык)</p>
+                            <address class="contact-info">
+                                <a href="mailto:li.z@jademandarin.com">li.z@jademandarin.com</a>
+                            </address>
+                        </div>
+                    </article>
+
+                    <article class="member-card" data-dept="education">
+                        <div class="member-avatar">АП</div>
+                        <div class="member-info">
+                            <h4 class="member-name">Анна Петрова</h4>
+                            <p class="member-position">Методист (русский язык)</p>
+                            <address class="contact-info">
+                                <a href="mailto:anna.p@jademandarin.com">anna.p@jademandarin.com</a>
+                            </address>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Финансовый отдел -->
+            <section class="department-card" aria-labelledby="finance-heading">
+                <div class="department-header">
+                    <h2 id="finance-heading">Финансовый отдел</h2>
+                    <button type="button" class="btn" aria-label="Связаться с финансами">Связаться</button>
+                </div>
+                <p class="department-description">Управляет бюджетом, зарплатами и финансовой отчетностью.</p>
+                
+                <h3 class="team-heading">Команда</h3>
+                <div class="team-members">
+                    <!-- Аналогичная структура карточек -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/structure.js" defer></script>
+</body>
+</html>

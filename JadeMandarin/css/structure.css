@@ -1,0 +1,129 @@
+/* Уникальные стили для страницы структуры */
+
+.page-title {
+    color: var(--jade-primary);
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.department-card {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.department-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--gray-border);
+}
+
+.department-description {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.team-heading {
+    color: var(--jade-primary);
+    margin: 25px 0 15px;
+}
+
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.member-card {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 6px;
+    background: var(--jade-light);
+}
+
+.member-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    color: var(--jade-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.contact-info {
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.contact-info a {
+    color: var(--jade-dark);
+    text-decoration: none;
+}
+
+/* Элементы управления */
+.controls-section {
+    margin-bottom: 30px;
+}
+
+.search-box {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--gray-border);
+    border-radius: 4px 0 0 4px;
+}
+
+.search-btn {
+    background: var(--jade-primary);
+    color: white;
+    border: none;
+    padding: 0 15px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 8px 15px;
+    background: white;
+    border: 1px solid var(--gray-border);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: var(--jade-primary);
+    color: white;
+    border-color: var(--jade-primary);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .team-members {
+        grid-template-columns: 1fr;
+    }
+    
+    .department-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}

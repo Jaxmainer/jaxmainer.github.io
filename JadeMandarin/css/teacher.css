@@ -1,0 +1,64 @@
+/* Уникальные стили для кабинета преподавателя */
+
+/* Сетка учеников */
+.students-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.student-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.student-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--jade-light);
+    color: var(--jade-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.student-details {
+    flex: 1;
+}
+
+/* Уведомление о материалах */
+.materials-alert {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: var(--jade-light);
+    border-radius: 8px;
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--jade-primary);
+    border: 1px solid var(--jade-primary);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .students-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .materials-alert {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}

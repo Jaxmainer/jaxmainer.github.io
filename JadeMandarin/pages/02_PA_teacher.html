@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jade Mandarin — Кабинет преподавателя</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/teacher.css">
+    <link rel="icon" href="../img/favicon.ico">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="logo" aria-label="Jade Mandarin">JM</div>
+            <div class="user-info">
+                <span class="user-name">Иван Петров</span>
+                <div class="user-avatar" aria-label="Аватар преподавателя">ИП</div>
+            </div>
+            <button class="mobile-menu-btn" aria-expanded="false" aria-label="Меню">☰</button>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <div class="layout-container">
+        <!-- Сайдбар -->
+        <nav class="sidebar" aria-label="Меню преподавателя">
+            <ul class="sidebar-menu">
+                <li class="active" aria-current="page">
+                    <a href="#">Главная</a>
+                </li>
+                <li><a href="#">Расписание</a></li>
+                <li><a href="#">Ученики</a></li>
+                <li><a href="#">Материалы</a></li>
+                <li><a href="#">Аналитика</a></li>
+                <li><a href="#">Чат</a></li>
+                <li><a href="#">Настройки</a></li>
+            </ul>
+        </nav>
+
+        <!-- Основная область -->
+        <main class="main-content">
+            <!-- Статистика -->
+            <section class="dashboard-section" aria-labelledby="stats-heading">
+                <h2 id="stats-heading" class="section-title">Обзор</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Запланировано уроков</div>
+                        <div class="stat-value">12</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Новых учеников</div>
+                        <div class="stat-value">3</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Завершено уроков</div>
+                        <div class="stat-value">28</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ближайшие уроки -->
+            <section class="dashboard-section" aria-labelledby="lessons-heading">
+                <h2 id="lessons-heading" class="section-title">Ближайшие уроки</h2>
+                <div class="upcoming-lessons">
+                    <article class="lesson-card">
+                        <div>
+                            <time datetime="2023-06-12T10:00" class="lesson-time">10:00 - 11:00</time>
+                            <div class="student-info">
+                                <span class="student-name">Анна К. (HSK 2)</span>
+                                <span class="lesson-topic">Грамматика HSK 2</span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn" aria-label="Подготовиться к уроку с Анной К.">Подготовиться</button>
+                    </article>
+                    <article class="lesson-card">
+                        <div>
+                            <time datetime="2023-06-14T14:30" class="lesson-time">14:30 - 15:30</time>
+                            <div class="student-info">
+                                <span class="student-name">Максим П. (HSK 1)</span>
+                                <span class="lesson-topic">Базовые иероглифы</span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn" aria-label="Подготовиться к уроку с Максимом П.">Подготовиться</button>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Материалы -->
+            <section class="dashboard-section" aria-labelledby="materials-heading">
+                <h2 id="materials-heading" class="section-title">Новые материалы</h2>
+                <div class="materials-alert">
+                    <p>Доступны новые учебные материалы для HSK 3.</p>
+                    <button type="button" class="btn btn-secondary" aria-label="Скачать материалы HSK 3">Скачать</button>
+                </div>
+            </section>
+
+            <!-- Ученики -->
+            <section class="dashboard-section" aria-labelledby="students-heading">
+                <h2 id="students-heading" class="section-title">Мои ученики</h2>
+                <div class="students-grid">
+                    <article class="student-card">
+                        <div class="student-avatar">АК</div>
+                        <div class="student-details">
+                            <h3>Анна Ковалева</h3>
+                            <p>HSK 2 (65% завершено)</p>
+                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="student-card">
+                        <div class="student-avatar">МП</div>
+                        <div class="student-details">
+                            <h3>Максим Петров</h3>
+                            <p>HSK 1 (30% завершено)</p>
+                            <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-fill" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/main.js" defer></script>
+</body>
+</html>
