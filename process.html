@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как проходят занятия | Нефрит - школа китайского языка</title>
+    <style>
+        /* Основные стили (как на других страницах) */
+        :root {
+            --jade-primary: #00A86B;
+            --jade-secondary: #5D8C7B;
+            --jade-light: #C1E1C1;
+            --jade-dark: #006B54;
+            --gold-accent: #FFD700;
+            --text-dark: #333333;
+            --text-light: #f8f8f8;
+            --background: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--background);
+            line-height: 1.6;
+        }
+
+        /* Шапка (как на других страницах) */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--jade-dark);
+            text-decoration: none;
+        }
+
+        .logo span {
+            font-size: 2.2rem;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--jade-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .header-btn {
+            background-color: var(--jade-primary);
+            color: white;
+            border: none;
+        }
+
+        .header-btn:hover {
+            background-color: var(--jade-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Хлебные крошки */
+        .breadcrumbs {
+            padding: 6rem 5% 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumbs a {
+            color: var(--jade-primary);
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        /* Основной контент страницы */
+        .process-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5% 4rem;
+        }
+
+        /* Заголовок страницы */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--jade-dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-header h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold-accent);
+        }
+
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Блок с шагами обучения */
+        .learning-steps {
+            margin-bottom: 5rem;
+        }
+
+        .step {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .step:nth-child(even) .step-content {
+            order: -1;
+        }
+
+        .step-image {
+            flex: 1;
+            min-width: 300px;
+            height: 300px;
+            background-color: var(--jade-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--jade-dark);
+            font-size: 2rem;
+            overflow: hidden;
+        }
+
+        .step-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .step-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--jade-primary);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            color: var(--jade-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Блок с платформой */
+        .platform {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .platform-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .platform-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-color: var(--jade-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--jade-dark);
+            font-size: 2rem;
+        }
+
+        .platform-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .platform-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .platform-feature-icon {
+            color: var(--jade-primary);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        /* Блок с домашними заданиями */
+        .homework {
+            margin-bottom: 5rem;
+        }
+
+        .homework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .homework-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .homework-icon {
+            font-size: 2rem;
+            color: var(--jade-primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Блок с расписанием */
+        .schedule {
+            background: linear-gradient(135deg, var(--jade-primary), var(--jade-secondary));
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-bottom: 5rem;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .schedule-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .schedule-item h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Блок с демо-уроком */
+        .demo-lesson {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .demo-video {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            background-color: var(--jade-light);
+            margin: 2rem auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--jade-dark);
+            font-size: 1.5rem;
+            overflow: hidden;
+        }
+
+        .demo-btn {
+            background-color: var(--jade-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .demo-btn:hover {
+            background-color: var(--jade-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Футер (как на других страницах) */
+        footer {
+            background-color: var(--jade-dark);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--gold-accent);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивные стили */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .breadcrumbs {
+                padding-top: 8rem;
+            }
+
+            .step,
+            .platform {
+                flex-direction: column;
+            }
+
+            .step:nth-child(even) .step-content {
+                order: 0;
+            }
+
+            .demo-video {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span>玉</span>Нефрит
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="courses.html">Курсы</a></li>
+                    <li><a href="method.html">Методика</a></li>
+                    <li><a href="about.html">О школе</a></li>
+                    <li><a href="process.html" style="color: var(--jade-primary);">Как проходят занятия</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="#" class="btn header-btn">Бесплатный урок</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Хлебные крошки -->
+    <div class="breadcrumbs">
+        <a href="index.html">Главная</a> / Как проходят занятия
+    </div>
+
+    <!-- Основной контент страницы -->
+    <div class="process-container">
+        <!-- Заголовок страницы -->
+        <div class="page-header">
+            <h1>Как проходят занятия</h1>
+            <p>Узнайте о формате обучения, нашей платформе и процессе взаимодействия с преподавателями</p>
+        </div>
+
+        <!-- Блок с шагами обучения -->
+        <section class="learning-steps">
+            <div class="step">
+                <div class="step-image">
+                    <!-- Здесь должно быть изображение -->
+                    准备
+                </div>
+                <div class="step-content">
+                    <span class="step-number">1</span>
+                    <h3>Подготовка к уроку</h3>
+                    <p>Перед каждым занятием вы получаете доступ к материалам урока: словарь, грамматические схемы,
+                        аудиофайлы. Это позволяет прийти на урок подготовленным и максимально эффективно использовать
+                        время с преподавателем.</p>
+                    <p>Наша система напомнит вам о предстоящем занятии за 1 час до начала.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-image">
+                    <!-- Здесь должно быть изображение -->
+                    课程
+                </div>
+                <div class="step-content">
+                    <span class="step-number">2</span>
+                    <h3>Формат урока</h3>
+                    <p>Занятия проходят в Zoom/Skype или на нашей интерактивной платформе. Стандартный урок длится 60
+                        минут и включает:</p>
+                    <ul>
+                        <li>Разбор домашнего задания (15 минут)</li>
+                        <li>Изучение новой темы (30 минут)</li>
+                        <li>Практику и закрепление (15 минут)</li>
+                    </ul>
+                    <p>70% времени урока - это разговорная практика.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-image">
+                    <!-- Здесь должно быть изображение -->
+                    互动
+                </div>
+                <div class="step-content">
+                    <span class="step-number">3</span>
+                    <h3>Интерактивное обучение</h3>
+                    <p>Наши уроки - это не просто лекции. Мы используем:</p>
+                    <ul>
+                        <li>Ролевые игры и диалоги</li>
+                        <li>Просмотр и обсуждение видео</li>
+                        <li>Работу с реальными материалами (новости, песни, статьи)</li>
+                        <li>Групповые дискуссии (для групповых занятий)</li>
+                    </ul>
+                    <p>Преподаватель адаптирует стиль обучения под ваш тип восприятия.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок с платформой -->
+        <section class="platform">
+            <div class="platform-content">
+                <h2>Наша обучающая платформа</h2>
+                <p>Все студенты получают доступ к уникальной платформе "Нефрит", где собраны все материалы курса и
+                    инструменты для обучения.</p>
+
+                <div class="platform-features">
+                    <div class="platform-feature">
+                        <span class="platform-feature-icon">✓</span>
+                        <div>Личный кабинет с расписанием</div>
+                    </div>
+                    <div class="platform-feature">
+                        <span class="platform-feature-icon">✓</span>
+                        <div>Интерактивные упражнения</div>
+                    </div>
+                    <div class="platform-feature">
+                        <span class="platform-feature-icon">✓</span>
+                        <div>Видеоархив всех занятий</div>
+                    </div>
+                    <div class="platform-feature">
+                        <span class="platform-feature-icon">✓</span>
+                        <div>Чат с преподавателем</div>
+                    </div>
+                    <div class="platform-feature">
+                        <span class="platform-feature-icon">✓</span>
+                        <div>Трекер прогресса</div>
+                    </div>
+                    <div class="platform-feature">
+                        <span class="platform-feature-icon">✓</span>
+                        <div>Мобильное приложение</div>
+                    </div>
+                </div>
+            </div>
+            <div class="platform-image">
+                <!-- Здесь должно быть изображение платформы -->
+                平台截图
+            </div>
+        </section>
+
+        <!-- Блок с домашними заданиями -->
+        <section class="homework">
+            <h2>Домашние задания и проверка</h2>
+            <p>После каждого занятия вы получаете домашнее задание, которое помогает закрепить материал.</p>
+
+            <div class="homework-grid">
+                <div class="homework-card">
+                    <div class="homework-icon">✍️</div>
+                    <h3>Письменные задания</h3>
+                    <p>Сочинения, упражнения на грамматику, переводы. Проверяются преподавателем с детальными
+                        комментариями.</p>
+                </div>
+
+                <div class="homework-card">
+                    <div class="homework-icon">🎧</div>
+                    <h3>Аудирование</h3>
+                    <p>Прослушивание аудио и видео материалов с последующим обсуждением на следующем уроке.</p>
+                </div>
+
+                <div class="homework-card">
+                    <div class="homework-icon">🎤</div>
+                    <h3>Устные задания</h3>
+                    <p>Записи вашей речи для работы над произношением и fluency. Преподаватель дает обратную связь.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок с расписанием -->
+        <section class="schedule">
+            <h2>График и расписание</h2>
+            <p>Мы предлагаем гибкие форматы обучения, которые подстроятся под ваш ритм жизни</p>
+
+            <div class="schedule-grid">
+                <div class="schedule-item">
+                    <h4>Индивидуальные занятия</h4>
+                    <p>Вы выбираете удобное время и частоту занятий (от 1 до 5 раз в неделю). Возможность переноса за 24
+                        часа.</p>
+                </div>
+
+                <div class="schedule-item">
+                    <h4>Групповые занятия</h4>
+                    <p>Фиксированное расписание 2 раза в неделю. Утренние, дневные и вечерние группы. Группы до 6
+                        человек.</p>
+                </div>
+
+                <div class="schedule-item">
+                    <h4>Интенсивные курсы</h4>
+                    <p>Занятия 5 раз в неделю. Идеально для подготовки к экзаменам или перед поездкой в Китай.</p>
+                </div>
+
+                <div class="schedule-item">
+                    <h4>Разговорные клубы</h4>
+                    <p>По выходным с носителями языка на различные темы. Доступно для всех студентов.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок с демо-уроком -->
+        <section class="demo-lesson">
+            <h2>Посмотрите, как проходит урок</h2>
+            <p>Ознакомьтесь с фрагментом реального занятия, чтобы понять наш формат обучения</p>
+
+            <div class="demo-video">
+                <!-- Здесь должно быть встроенное видео -->
+                Видео демо-урока
+            </div>
+
+            <a href="#" class="btn demo-btn">Записаться на бесплатный урок</a>
+        </section>
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <div class="footer-container">
+            <h3>Онлайн школа китайского языка "Нефрит"</h3>
+            <p>玉 - символ мудрости и совершенства в китайской культуре</p>
+            <div class="social-links">
+                <a href="#">VK</a>
+                <a href="#">Telegram</a>
+                <a href="#">YouTube</a>
+                <a href="#">WeChat</a>
+            </div>
+            <div class="copyright">
+                © 2023 Нефрит. Все права защищены.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
