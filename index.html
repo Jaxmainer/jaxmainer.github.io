@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <!-- Мета-информация для корректного отображения на всех устройствах -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нефрит - онлайн школа китайского языка</title>
+    <style>
+        /* ===== ГЛОБАЛЬНЫЕ СТИЛИ ===== */
+        /* Цветовая палитра в переменных (нефритовые оттенки) */
+        :root {
+            --jade-primary: #00A86B;
+            /* Основной нефритовый цвет */
+            --jade-secondary: #5D8C7B;
+            /* Вторичный нефритовый */
+            --jade-light: #C1E1C1;
+            /* Светлый нефритовый */
+            --jade-dark: #006B54;
+            /* Темный нефритовый */
+            --gold-accent: #FFD700;
+            /* Золотой акцентный цвет */
+            --text-dark: #333333;
+            /* Цвет основного текста */
+            --text-light: #f8f8f8;
+            /* Цвет светлого текста */
+            --background: #f9f9f9;
+            /* Цвет фона страницы */
+        }
+
+        /* Основные настройки страницы */
+        body {
+            font-family: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--background);
+            line-height: 1.6;
+        }
+
+        /* Стили для всех кнопок */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* ===== ШАПКА САЙТА ===== */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Контейнер для содержимого шапки */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Стили логотипа */
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--jade-dark);
+            text-decoration: none;
+        }
+
+        /* Стиль для иероглифа в лого */
+        .logo span {
+            font-size: 2.2rem;
+            margin-right: 10px;
+        }
+
+        /* Основное меню навигации */
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        /* Эффект при наведении на пункты меню */
+        nav ul li a:hover {
+            color: var(--jade-primary);
+        }
+
+        /* Стиль кнопки в шапке */
+        .header-btn {
+            background-color: var(--jade-primary);
+            color: white;
+            border: none;
+        }
+
+        .header-btn:hover {
+            background-color: var(--jade-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== ГЛАВНЫЙ БАННЕР ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--jade-primary), var(--jade-secondary));
+            color: white;
+            padding: 10rem 5% 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Декоративная волна внизу баннера */
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" fill="%23f9f9f9"></path></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /* Заголовок баннера */
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Подзаголовок баннера */
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        /* Контейнер для кнопок в баннере */
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Основная кнопка */
+        .primary-btn {
+            background-color: white;
+            color: var(--jade-primary);
+        }
+
+        /* Вторичная кнопка */
+        .secondary-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* Эффекты при наведении на кнопки */
+        .primary-btn:hover,
+        .secondary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .secondary-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ===== БЛОК ПРЕИМУЩЕСТВ ===== */
+        .features {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Стиль заголовка секции */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--jade-dark);
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Декоративная линия под заголовком */
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold-accent);
+        }
+
+        /* Сетка для карточек преимуществ */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Стиль карточки преимущества */
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        /* Эффект при наведении на карточку */
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Стиль иконки в карточке */
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--jade-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== БЛОК КУРСОВ ===== */
+        .courses {
+            padding: 5rem 5%;
+            background-color: #f5f5f5;
+        }
+
+        .courses-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Сетка для карточек курсов */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Стиль карточки курса */
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        /* Эффект при наведении на карточку курса */
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Заглушка для изображения курса */
+        .course-image {
+            height: 200px;
+            background-color: var(--jade-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--jade-dark);
+            font-size: 3rem;
+        }
+
+        /* Контент карточки курса */
+        .course-content {
+            padding: 1.5rem;
+        }
+
+        /* Стиль цены курса */
+        .course-price {
+            color: var(--jade-primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* ===== ФУТЕР ===== */
+        footer {
+            background-color: var(--jade-dark);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Социальные иконки */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--gold-accent);
+        }
+
+        /* Копирайт */
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <span>玉</span>Нефрит
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#">Курсы</a></li>
+                    <li><a href="#">Методика</a></li>
+                    <li><a href="#">Преподаватели</a></li>
+                    <li><a href="#">Отзывы</a></li>
+                    <li><a href="#" class="btn header-btn">Бесплатный урок</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section class="hero">
+        <h1>Погрузитесь в мир китайского языка с "Нефритом"</h1>
+        <p>Эффективное обучение с носителями языка по уникальной методике для всех уровней подготовки</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn primary-btn">Выбрать курс</a>
+            <a href="#" class="btn secondary-btn">Бесплатный урок</a>
+        </div>
+    </section>
+
+    <!-- Блок преимуществ -->
+    <section class="features">
+        <div class="section-title">
+            <h2>Почему выбирают нас</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">㊣</div>
+                <h3>Носители языка</h3>
+                <p>Все преподаватели - дипломированные специалисты из Китая с опытом преподавания</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">㊎</div>
+                <h3>Гибкий график</h3>
+                <p>Занимайтесь в удобное время из любой точки мира</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">㊋</div>
+                <h3>Практика общения</h3>
+                <p>Разговорные клубы с носителями для развития коммуникативных навыков</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок курсов -->
+    <section class="courses">
+        <div class="courses-container">
+            <div class="section-title">
+                <h2>Наши курсы</h2>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image">HSK 1</div>
+                    <div class="course-content">
+                        <h3>Китайский для начинающих</h3>
+                        <div class="course-meta">
+                            <span>3 месяца</span>
+                            <span>12 уроков</span>
+                        </div>
+                        <p>Освойте базовые иероглифы и грамматику для повседневного общения</p>
+                        <div class="course-price">12 900 ₽</div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">HSK 3</div>
+                    <div class="course-content">
+                        <h3>Средний уровень</h3>
+                        <div class="course-meta">
+                            <span>6 месяцев</span>
+                            <span>24 урока</span>
+                        </div>
+                        <p>Научитесь свободно обсуждать различные темы и понимать сложные тексты</p>
+                        <div class="course-price">24 900 ₽</div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">HSK 5</div>
+                    <div class="course-content">
+                        <h3>Продвинутый уровень</h3>
+                        <div class="course-meta">
+                            <span>9 месяцев</span>
+                            <span>36 уроков</span>
+                        </div>
+                        <p>Подготовка к свободному владению языком и сдаче экзаменов</p>
+                        <div class="course-price">36 900 ₽</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <div class="footer-container">
+            <h3>Онлайн школа китайского языка "Нефрит"</h3>
+            <p>玉 - символ мудрости и совершенства в китайской культуре</p>
+            <div class="social-links">
+                <a href="#">VK</a>
+                <a href="#">Telegram</a>
+                <a href="#">YouTube</a>
+                <a href="#">WeChat</a>
+            </div>
+            <div class="copyright">
+                © 2023 Нефрит. Все права защищены.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
