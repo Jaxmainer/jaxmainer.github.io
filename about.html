@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О школе китайского языка | Нефрит</title>
+    <style>
+        /* Основные стили (как на других страницах) */
+        :root {
+            --jade-primary: #00A86B;
+            --jade-secondary: #5D8C7B;
+            --jade-light: #C1E1C1;
+            --jade-dark: #006B54;
+            --gold-accent: #FFD700;
+            --text-dark: #333333;
+            --text-light: #f8f8f8;
+            --background: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--background);
+            line-height: 1.6;
+        }
+
+        /* Шапка (как на других страницах) */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--jade-dark);
+            text-decoration: none;
+        }
+
+        .logo span {
+            font-size: 2.2rem;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--jade-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .header-btn {
+            background-color: var(--jade-primary);
+            color: white;
+            border: none;
+        }
+
+        .header-btn:hover {
+            background-color: var(--jade-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Хлебные крошки */
+        .breadcrumbs {
+            padding: 6rem 5% 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumbs a {
+            color: var(--jade-primary);
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        /* Основной контент страницы */
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5% 4rem;
+        }
+
+        /* Заголовок страницы */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--jade-dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-header h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold-accent);
+        }
+
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Блок "О школе" */
+        .about-school {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-color: var(--jade-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--jade-dark);
+            font-size: 2rem;
+            overflow: hidden;
+        }
+
+        /* Блок "Наши преимущества" */
+        .advantages {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 5rem;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .advantage-item {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .advantage-icon {
+            color: var(--jade-primary);
+            font-size: 1.5rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Блок "Наша методика" */
+        .methodology {
+            margin-bottom: 5rem;
+        }
+
+        .method-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .method-step {
+            flex: 1;
+            min-width: 250px;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            padding-top: 3.5rem;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background-color: var(--jade-primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Блок "Наши преподаватели" */
+        .teachers {
+            margin-bottom: 5rem;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .teacher-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .teacher-image {
+            height: 300px;
+            background-color: var(--jade-light);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: var(--jade-dark);
+            font-size: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .teacher-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .teacher-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .teacher-name {
+            font-size: 1.3rem;
+            color: var(--jade-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .teacher-position {
+            color: var(--jade-primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .teacher-bio {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .teacher-exp {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .exp-item {
+            text-align: center;
+        }
+
+        .exp-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--jade-primary);
+        }
+
+        .exp-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Блок "Наши достижения" */
+        .achievements {
+            background: linear-gradient(135deg, var(--jade-primary), var(--jade-secondary));
+            color: white;
+            padding: 4rem 5%;
+            border-radius: 10px;
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .achievement-item {
+            padding: 1rem;
+        }
+
+        .achievement-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Футер (как на других страницах) */
+        footer {
+            background-color: var(--jade-dark);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--gold-accent);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивные стили */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .breadcrumbs {
+                padding-top: 8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span>玉</span>Нефрит
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="courses.html">Курсы</a></li>
+                    <li><a href="method.html">Методика</a></li>
+                    <li><a href="about.html" style="color: var(--jade-primary);">О школе</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="#" class="btn header-btn">Бесплатный урок</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Хлебные крошки -->
+    <div class="breadcrumbs">
+        <a href="index.html">Главная</a> / О школе
+    </div>
+
+    <!-- Основной контент страницы -->
+    <div class="about-container">
+        <!-- Заголовок страницы -->
+        <div class="page-header">
+            <h1>О школе "Нефрит"</h1>
+            <p>Мы создаем уникальную среду для изучения китайского языка, сочетая традиционные методы с современными
+                технологиями</p>
+        </div>
+
+        <!-- Блок "О школе" -->
+        <section class="about-school">
+            <div class="about-text">
+                <h2>Наша история</h2>
+                <p>Школа китайского языка "Нефрит" была основана в 2015 году группой энтузиастов, влюбленных в китайскую
+                    культуру и язык. Начав с небольших групповых занятий, сегодня мы стали одной из ведущих онлайн-школ
+                    китайского языка в России.</p>
+                <p>Название "Нефрит" выбрано не случайно. В китайской культуре нефрит символизирует мудрость,
+                    добродетель и гармонию — именно эти принципы лежат в основе нашего подхода к обучению.</p>
+                <p>За 8 лет работы мы обучили более 2000 студентов, многие из которых успешно сдали экзамены HSK и нашли
+                    применение своим знаниям в работе и учебе.</p>
+            </div>
+            <div class="about-image">
+                <!-- Здесь должно быть изображение -->
+                学校照片
+            </div>
+        </section>
+
+        <!-- Блок "Наши преимущества" -->
+        <section class="advantages">
+            <h2>Наши преимущества</h2>
+            <p>Почему студенты выбирают школу "Нефрит" для изучения китайского языка:</p>
+
+            <div class="advantages-grid">
+                <div class="advantage-item">
+                    <div class="advantage-icon">✓</div>
+                    <div>
+                        <h3>Носители языка</h3>
+                        <p>Все преподаватели — дипломированные специалисты из Китая с опытом преподавания от 5 лет</p>
+                    </div>
+                </div>
+
+                <div class="advantage-item">
+                    <div class="advantage-icon">✓</div>
+                    <div>
+                        <h3>Авторская методика</h3>
+                        <p>Уникальная система обучения, сочетающая традиционные и коммуникативные подходы</p>
+                    </div>
+                </div>
+
+                <div class="advantage-item">
+                    <div class="advantage-icon">✓</div>
+                    <div>
+                        <h3>Гибкий график</h3>
+                        <p>Возможность заниматься в удобное время из любой точки мира</p>
+                    </div>
+                </div>
+
+                <div class="advantage-item">
+                    <div class="advantage-icon">✓</div>
+                    <div>
+                        <h3>Культурный контекст</h3>
+                        <p>Погружение не только в язык, но и в богатую китайскую культуру</p>
+                    </div>
+                </div>
+
+                <div class="advantage-item">
+                    <div class="advantage-icon">✓</div>
+                    <div>
+                        <h3>Практика общения</h3>
+                        <p>Регулярные разговорные клубы с носителями языка</p>
+                    </div>
+                </div>
+
+                <div class="advantage-item">
+                    <div class="advantage-icon">✓</div>
+                    <div>
+                        <h3>Поддержка 24/7</h3>
+                        <p>Кураторы всегда на связи и готовы помочь с любыми вопросами</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок "Наша методика" -->
+        <section class="methodology">
+            <h2>Наша методика обучения</h2>
+            <p>Система "Нефрит" основана на трех ключевых принципах, обеспечивающих эффективное освоение языка:</p>
+
+            <div class="method-steps">
+                <div class="method-step">
+                    <div class="step-number">1</div>
+                    <h3>Погружение</h3>
+                    <p>С первого занятия вы начнете думать на китайском. Минимум русского языка на уроках, максимум
+                        практики.</p>
+                </div>
+
+                <div class="method-step">
+                    <div class="step-number">2</div>
+                    <h3>Адаптация</h3>
+                    <p>Индивидуальный подход к каждому студенту с учетом целей, темпа обучения и особенностей
+                        восприятия.</p>
+                </div>
+
+                <div class="method-step">
+                    <div class="step-number">3</div>
+                    <h3>Применение</h3>
+                    <p>Фокус на практическом использовании языка в реальных ситуациях, а не на механическом запоминании.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок "Наши преподаватели" -->
+        <section class="teachers">
+            <h2>Наши преподаватели</h2>
+            <p>Профессиональная команда носителей языка с педагогическим образованием и многолетним опытом:</p>
+
+            <div class="teachers-grid">
+                <!-- Преподаватель 1 -->
+                <div class="teacher-card">
+                    <div class="teacher-image">
+                        <img src="https://via.placeholder.com/400x300/00A86B/FFFFFF?text=张老师" alt="张老师">
+                    </div>
+                    <div class="teacher-info">
+                        <div class="teacher-name">张丽华 (Чжан Лихуа)</div>
+                        <div class="teacher-position">Старший преподаватель, HSK эксперт</div>
+                        <div class="teacher-bio">
+                            Окончила Пекинский университет, специалист по преподаванию китайского как иностранного. Опыт
+                            работы — 12 лет.
+                        </div>
+                        <div class="teacher-exp">
+                            <div class="exp-item">
+                                <div class="exp-number">12+</div>
+                                <div class="exp-label">лет опыта</div>
+                            </div>
+                            <div class="exp-item">
+                                <div class="exp-number">500+</div>
+                                <div class="exp-label">студентов</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Преподаватель 2 -->
+                <div class="teacher-card">
+                    <div class="teacher-image">
+                        <img src="https://via.placeholder.com/400x300/5D8C7B/FFFFFF?text=王老师" alt="王老师">
+                    </div>
+                    <div class="teacher-info">
+                        <div class="teacher-name">王明 (Ван Мин)</div>
+                        <div class="teacher-position">Преподаватель разговорного китайского</div>
+                        <div class="teacher-bio">
+                            Специалист по современному разговорному языку и сленгу. Ведущий разговорного клуба школы.
+                        </div>
+                        <div class="teacher-exp">
+                            <div class="exp-item">
+                                <div class="exp-number">8</div>
+                                <div class="exp-label">лет опыта</div>
+                            </div>
+                            <div class="exp-item">
+                                <div class="exp-number">300+</div>
+                                <div class="exp-label">студентов</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Преподаватель 3 -->
+                <div class="teacher-card">
+                    <div class="teacher-image">
+                        <img src="https://via.placeholder.com/400x300/C1E1C1/333333?text=李老师" alt="李老师">
+                    </div>
+                    <div class="teacher-info">
+                        <div class="teacher-name">李小龙 (Ли Сяолун)</div>
+                        <div class="teacher-position">Преподаватель для детей</div>
+                        <div class="teacher-bio">
+                            Специалист по игровому обучению детей. Автор методики "Китайский через сказки и игры".
+                        </div>
+                        <div class="teacher-exp">
+                            <div class="exp-item">
+                                <div class="exp-number">6</div>
+                                <div class="exp-label">лет опыта</div>
+                            </div>
+                            <div class="exp-item">
+                                <div class="exp-number">200+</div>
+                                <div class="exp-label">детей</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок "Наши достижения" -->
+        <section class="achievements">
+            <h2>Наши достижения</h2>
+            <p>За годы работы мы помогли сотням студентов достичь своих целей в изучении китайского языка</p>
+
+            <div class="achievements-grid">
+                <div class="achievement-item">
+                    <div class="achievement-number">8+</div>
+                    <div>Лет успешной работы</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-number">2000+</div>
+                    <div>Довольных студентов</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-number">98%</div>
+                    <div>Успешной сдачи HSK</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-number">15</div>
+                    <div>Профессиональных преподавателей</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <div class="footer-container">
+            <h3>Онлайн школа китайского языка "Нефрит"</h3>
+            <p>玉 - символ мудрости и совершенства в китайской культуре</p>
+            <div class="social-links">
+                <a href="#">VK</a>
+                <a href="#">Telegram</a>
+                <a href="#">YouTube</a>
+                <a href="#">WeChat</a>
+            </div>
+            <div class="copyright">
+                © 2023 Нефрит. Все права защищены.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
