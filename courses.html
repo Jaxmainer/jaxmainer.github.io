@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы китайского языка | Нефрит</title>
+    <style>
+        /* Используем те же стили, что и на главной странице */
+        :root {
+            --jade-primary: #00A86B;
+            --jade-secondary: #5D8C7B;
+            --jade-light: #C1E1C1;
+            --jade-dark: #006B54;
+            --gold-accent: #FFD700;
+            --text-dark: #333333;
+            --text-light: #f8f8f8;
+            --background: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--background);
+            line-height: 1.6;
+        }
+
+        /* Шапка (такая же как на главной) */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--jade-dark);
+            text-decoration: none;
+        }
+
+        .logo span {
+            font-size: 2.2rem;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--jade-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .header-btn {
+            background-color: var(--jade-primary);
+            color: white;
+            border: none;
+        }
+
+        .header-btn:hover {
+            background-color: var(--jade-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Хлебные крошки */
+        .breadcrumbs {
+            padding: 6rem 5% 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumbs a {
+            color: var(--jade-primary);
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        /* Заголовок страницы */
+        .page-header {
+            padding: 1rem 5% 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--jade-dark);
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Фильтры курсов */
+        .course-filters {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-group label {
+            margin-right: 0.5rem;
+            font-weight: 500;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .filter-btn {
+            background-color: var(--jade-primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--jade-dark);
+        }
+
+        /* Сетка курсов */
+        .courses-container {
+            padding: 0 5% 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-badge {
+            background-color: var(--gold-accent);
+            color: var(--text-dark);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-image {
+            height: 200px;
+            background-color: var(--jade-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--jade-dark);
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .course-level {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--jade-primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+
+        .course-content h3 {
+            color: var(--jade-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .course-description {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .course-price {
+            color: var(--jade-primary);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .course-btn {
+            background-color: var(--jade-primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .course-btn:hover {
+            background-color: var(--jade-dark);
+        }
+
+        /* Пагинация */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+            gap: 0.5rem;
+        }
+
+        .pagination a,
+        .pagination span {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .pagination a:hover {
+            background-color: var(--jade-light);
+        }
+
+        .pagination .current {
+            background-color: var(--jade-primary);
+            color: white;
+            border-color: var(--jade-primary);
+        }
+
+        /* Футер (такой же как на главной) */
+        footer {
+            background-color: var(--jade-dark);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--gold-accent);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span>玉</span>Нефрит
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="courses.html" style="color: var(--jade-primary);">Курсы</a></li>
+                    <li><a href="method.html">Методика</a></li>
+                    <li><a href="teachers.html">Преподаватели</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="#" class="btn header-btn">Бесплатный урок</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Хлебные крошки -->
+    <div class="breadcrumbs">
+        <a href="index.html">Главная</a> / Курсы
+    </div>
+
+    <!-- Заголовок страницы -->
+    <div class="page-header">
+        <h1>Наши курсы китайского языка</h1>
+        <p>Выберите программу, которая соответствует вашим целям и уровню подготовки. Все курсы включают практику с
+            носителями языка.</p>
+    </div>
+
+    <!-- Фильтры курсов -->
+    <div class="course-filters">
+        <div class="filter-group">
+            <label for="level">Уровень:</label>
+            <select id="level">
+                <option value="all">Все уровни</option>
+                <option value="beginner">Начинающий (HSK 1-2)</option>
+                <option value="intermediate">Средний (HSK 3-4)</option>
+                <option value="advanced">Продвинутый (HSK 5-6)</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="format">Формат:</label>
+            <select id="format">
+                <option value="all">Все форматы</option>
+                <option value="group">Групповые</option>
+                <option value="individual">Индивидуальные</option>
+                <option value="intensive">Интенсив</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="duration">Длительность:</label>
+            <select id="duration">
+                <option value="all">Любая</option>
+                <option value="1-3">1-3 месяца</option>
+                <option value="3-6">3-6 месяцев</option>
+                <option value="6+">Более 6 месяцев</option>
+            </select>
+        </div>
+
+        <button class="filter-btn">Применить</button>
+    </div>
+
+    <!-- Сетка курсов -->
+    <div class="courses-container">
+        <div class="courses-grid">
+            <!-- Курс 1 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <div class="course-level">HSK 1</div>
+                    中文
+                </div>
+                <div class="course-content">
+                    <span class="course-badge">Новый набор</span>
+                    <h3>Китайский для начинающих</h3>
+                    <div class="course-meta">
+                        <span>12 уроков</span>
+                        <span>3 месяца</span>
+                    </div>
+                    <div class="course-description">
+                        Освойте базовые иероглифы, грамматику и произношение. Начните говорить на простые темы уже через
+                        месяц.
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-price">12 900 ₽</div>
+                        <a href="#" class="btn course-btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Курс 2 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <div class="course-level">HSK 2-3</div>
+                    汉语
+                </div>
+                <div class="course-content">
+                    <span class="course-badge">Бестселлер</span>
+                    <h3>Разговорный китайский</h3>
+                    <div class="course-meta">
+                        <span>24 урока</span>
+                        <span>6 месяцев</span>
+                    </div>
+                    <div class="course-description">
+                        Научитесь свободно общаться на повседневные темы, понимать речь носителей и смотреть фильмы с
+                        субтитрами.
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-price">24 900 ₽</div>
+                        <a href="#" class="btn course-btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Курс 3 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <div class="course-level">HSK 4-5</div>
+                    中国
+                </div>
+                <div class="course-content">
+                    <h3>Бизнес-китайский</h3>
+                    <div class="course-meta">
+                        <span>18 уроков</span>
+                        <span>4 месяца</span>
+                    </div>
+                    <div class="course-description">
+                        Специализированный курс для делового общения, переговоров и работы с китайскими партнерами.
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-price">29 900 ₽</div>
+                        <a href="#" class="btn course-btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Курс 4 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <div class="course-level">HSK 3-4</div>
+                    你好
+                </div>
+                <div class="course-content">
+                    <span class="course-badge">Акция</span>
+                    <h3>Интенсивный курс</h3>
+                    <div class="course-meta">
+                        <span>30 уроков</span>
+                        <span>2 месяца</span>
+                    </div>
+                    <div class="course-description">
+                        Ускоренная программа для тех, кто хочет быстро продвинуться в изучении языка. 5 занятий в
+                        неделю.
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-price" style="text-decoration: line-through; color: #999;">34 900 ₽</div>
+                        <div class="course-price">27 900 ₽</div>
+                        <a href="#" class="btn course-btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Курс 5 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <div class="course-level">HSK 1-6</div>
+                    儿童
+                </div>
+                <div class="course-content">
+                    <h3>Китайский для детей</h3>
+                    <div class="course-meta">
+                        <span>36 уроков</span>
+                        <span>9 месяцев</span>
+                    </div>
+                    <div class="course-description">
+                        Игровая методика обучения для детей 7-12 лет. Красочные материалы, песни и мультфильмы на
+                        китайском.
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-price">19 900 ₽</div>
+                        <a href="#" class="btn course-btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Курс 6 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <div class="course-level">HSK 5-6</div>
+                    文化
+                </div>
+                <div class="course-content">
+                    <h3>Китайская культура и литература</h3>
+                    <div class="course-meta">
+                        <span>16 уроков</span>
+                        <span>4 месяца</span>
+                    </div>
+                    <div class="course-description">
+                        Для продвинутых студентов. Чтение классической литературы, анализ культурных феноменов и идиом.
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-price">22 900 ₽</div>
+                        <a href="#" class="btn course-btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Пагинация -->
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <span class="current">2</span>
+            <a href="#">3</a>
+            <a href="#">&raquo;</a>
+        </div>
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <div class="footer-container">
+            <h3>Онлайн школа китайского языка "Нефрит"</h3>
+            <p>玉 - символ мудрости и совершенства в китайской культуре</p>
+            <div class="social-links">
+                <a href="#">VK</a>
+                <a href="#">Telegram</a>
+                <a href="#">YouTube</a>
+                <a href="#">WeChat</a>
+            </div>
+            <div class="copyright">
+                © 2023 Нефрит. Все права защищены.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
